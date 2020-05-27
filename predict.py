@@ -6,10 +6,13 @@ from tkinter import *
 
 # Importing the DS
 dataset = pd.read_csv('corona.csv')
-x = dataset.iloc[4:, 0:1].values
-y = dataset.iloc[4:, 1].values
+x = dataset.iloc[:, 0:1].values
+y = dataset.iloc[:, 1].values
 y = y.reshape(len(y), 1)
 
+print(dataset.head())
+
+print(dataset.describe())
 # Feature Scaling
 from sklearn import preprocessing
 sc_x = preprocessing.StandardScaler()
@@ -22,8 +25,8 @@ from sklearn.svm import SVR
 regressor = SVR(kernel='poly')
 regressor.fit(x, y)
 
-# Predicting a new result
-print(sc_y.inverse_transform(regressor.predict(sc_x.transform([[84]]))))
+# Predicting a new result for 21.05.2020
+a = str(sc_y.inverse_transform(regressor.predict(sc_x.transform([[97]]))))
 
 
 # Training the Polynomial Regression model on the whole dataset
@@ -43,6 +46,6 @@ plt.title('Covid-19 prediction')
 plt.xlabel('Day')
 plt.ylabel('Corona virus cases')
 plt.show()
-
+print("The total covid-19 cases predicted as on 27.05.2020="+a)
 
 
