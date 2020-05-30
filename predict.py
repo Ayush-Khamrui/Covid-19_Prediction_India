@@ -46,6 +46,6 @@ plt.title('Covid-19 prediction')
 plt.xlabel('Day')
 plt.ylabel('Corona virus cases')
 # plt.show()
-print("The total covid-19 cases predicted as on 27.05.2020="+a)
+print("The total covid-19 cases predicted as on 30.05.2020="+a)
 
 
